@@ -27,8 +27,3 @@ def create_tables():
         if conn:
             cur.close()
             conn.close()
-        
-        
-        
-        
-        

@@ -1,8 +1,8 @@
 import sqlite3
 from sqlite3 import Error
 
-
 from .connection import create_connection
+
 
 def insert_task(data):
     conn = create_connection()
@@ -24,33 +24,33 @@ def insert_task(data):
         if conn:
             cur.close()
             conn.close()
-            
+
 def select_task_by_id(_id):
     conn = create_connection()
     
-    sql = f"SELECT * FROM tasks WHERE id = {_id}"
-    
+    sql = f"SELECT * FROM tasks WHERE id = {_id}" 
+
     try:
-        conn.row_factory = sqlite3.Row 
+        conn.row_factory = sqlite3.Row
         cur = conn.cursor()
         cur.execute(sql)
-        task = dict(cur.fetchone())   
+        task = dict(cur.fetchone())
         return task
     except Error as e:
-        print(f"Error at select_tasks_by_id : {str(e)}")
+        print(f"Error at select_task_by_id : {str(e)}")
         return False
     finally:
         if conn:
             cur.close()
             conn.close()
 
+
 def select_all_tasks():
     conn = create_connection()
-    
+
     sql = "SELECT * FROM tasks"
-    
     try:
-        conn.row_factory = sqlite3.Row 
+        conn.row_factory = sqlite3.Row
         cur = conn.cursor()
         cur.execute(sql)
         task_rows = cur.fetchall()
@@ -69,7 +69,7 @@ def update_task(_id, data):
     conn = create_connection()
 
     sql = f""" UPDATE tasks SET title = ?
-            WHERE id = {_id}
+             WHERE id = {_id}
     """
 
     try:
@@ -85,7 +85,7 @@ def update_task(_id, data):
         if conn:
             cur.close()
             conn.close()
-            
+
 def delete_task(_id):
     conn = create_connection()
 

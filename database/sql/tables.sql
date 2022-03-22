@@ -4,3 +4,6 @@ CREATE TABLE IF NOT EXISTS tasks(
     created_date TEXT NOT NULL,
     completed INTEGER NOT NULL DEFAULT 0
 )
+
+
+
