@@ -9,7 +9,7 @@ tasks_bp = Blueprint('routes-tasks', __name__)
 @tasks_bp.route('/tasks', methods=['POST'])
 def add_task():
     title = request.json['title']
-    created_date = datetime.now().strftime("%x") 
+    created_date = datetime.now().strftime("%x") # 5/22/2021
 
     data = (title, created_date)
     task_id = tasks.insert_task(data)
@@ -56,6 +56,5 @@ def complete_task():
     completed = request.args.get('completed')
 
     if tasks.complete_task(id_arg, completed):
-        
         return jsonify({'message': 'Succesfully'})
     return jsonify({'message': 'Internal Error'})
