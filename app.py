@@ -1,7 +1,7 @@
 from flask import Flask
 
 
-from resources.tasks import tasks_bp
+from resources.methods import tasks_bp
 from database import setup
 
 
